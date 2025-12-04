@@ -26,7 +26,7 @@ export default function QuoteCard({
   return (
     <div className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-blue-200 overflow-hidden hover:scale-105 transform">
       {/* Image Section */}
-      <div className="relative h-80 w-full overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+      <div className="relative h-80 w-full overflow-hidden bg-linear-to-br from-gray-100 to-gray-200">
         {image ? (
           <Image
             src={image}
@@ -36,7 +36,7 @@ export default function QuoteCard({
             className="object-cover group-hover:scale-110 transition-transform duration-300"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+          <div className="w-full h-full bg-linear-to-br from-blue-400 to-purple-500 flex items-center justify-center">
             <div className="text-white text-center">
               <div className="text-5xl font-serif mb-2 opacity-50">"</div>
               <p className="text-sm font-medium opacity-70">Quote</p>
@@ -44,7 +44,7 @@ export default function QuoteCard({
           </div>
         )}
         {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       {/* Content Section */}
@@ -53,7 +53,7 @@ export default function QuoteCard({
         <div className="flex items-start justify-between mb-3">
           <div className="text-3xl text-blue-200 font-serif">"</div>
           <span
-            className={`inline-block px-3 py-1 bg-gradient-to-r ${categoryColor} text-xs font-semibold rounded-full`}
+            className={`inline-block px-3 py-1 bg-linear-to-r ${categoryColor} text-xs font-semibold rounded-full`}
           >
             {category}
           </span>

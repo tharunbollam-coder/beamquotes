@@ -25,36 +25,23 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
             <a
-              href="#home"
+              href="/"
               className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
             >
               Home
             </a>
             <a
-              href="#quotes"
+              href="/quotes"
               className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
             >
               Quotes
             </a>
             <a
-              href="#categories"
-              className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
-            >
-              Categories
-            </a>
-            <a
-              href="#about"
+              href="/about"
               className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
             >
               About
             </a>
-          </div>
-
-          {/* Desktop CTA Button */}
-          <div className="hidden md:flex items-center space-x-4">
-            <button className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg hover:shadow-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
-              Share Quote
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -76,32 +63,23 @@ export default function Navbar() {
         {isOpen && (
           <div className="md:hidden pb-4 border-t border-gray-100 animate-in fade-in slide-in-from-top-2 duration-200">
             <a
-              href="#home"
+              href="/"
               className="block px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
             >
               Home
             </a>
             <a
-              href="#quotes"
+              href="/quotes"
               className="block px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
             >
               Quotes
             </a>
             <a
-              href="#categories"
-              className="block px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
-            >
-              Categories
-            </a>
-            <a
-              href="#about"
+              href="/about"
               className="block px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
             >
               About
             </a>
-            <button className="w-full mt-2 px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300">
-              Share Quote
-            </button>
           </div>
         )}
       </div>
