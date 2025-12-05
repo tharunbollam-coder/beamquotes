@@ -4,8 +4,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import QuoteCard from "@/components/QuoteCard";
-import { Zap, Search, Heart } from "lucide-react";
-import Image from "next/image";
+import { Zap, Heart, Quote as QuoteIcon } from "lucide-react";
 
 const quotesData = [
   {
@@ -97,7 +96,6 @@ const authorsData = [
 
 export default function Home() {
   const [copied, setCopied] = useState({});
-  const [searchTerm, setSearchTerm] = useState("");
 
   const handleCopy = (text, id) => {
     navigator.clipboard.writeText(text);
@@ -113,48 +111,49 @@ export default function Home() {
     }, 2000);
   };
 
-  const filteredQuotes = quotesData.filter(
-    (quote) =>
-      quote.text.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      quote.author.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
-    <div className="min-h-screen text-gray-900 flex flex-col">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative py-40 px-4 sm:px-6 lg:px-8 overflow-hidden flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        {/* Background Glow Effect */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] -translate-x-1/2 -translate-y-1/2 bg-gradient-radial from-blue-200/40 via-transparent to-transparent rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] -translate-x-1/4 -translate-y-1/4 bg-gradient-radial from-purple-200/40 via-transparent to-transparent rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <section className="relative pt-32 pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden flex items-center justify-center">
+        {/* Soft background glow */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-slate-50 to-indigo-50" />
+          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full blur-3xl opacity-60 bg-[radial-gradient(circle_at_center,rgba(129,140,248,0.3),transparent_65%)]" />
+          <div className="absolute bottom-[-200px] right-[-100px] w-[500px] h-[500px] rounded-full blur-3xl opacity-50 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.25),transparent_65%)]" />
         </div>
 
-        <div className="max-w-5xl mx-auto relative z-10 text-center">
+        <div className="max-w-5xl mx-auto relative text-center">
           {/* Tagline */}
-          <div className="inline-block px-4 py-2 mb-8 text-sm font-semibold text-blue-700 uppercase tracking-wider bg-blue-100 border border-blue-300 rounded-full">
-            Unlock Timeless Wisdom
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 text-xs font-semibold tracking-[0.18em] uppercase rounded-full border border-slate-200 bg-white/70 shadow-sm backdrop-blur-sm">
+            <span className="inline-flex h-2 w-2 rounded-full bg-gradient-to-r from-indigo-500 to-sky-500 animate-pulse" />
+            <span className="text-sky-700">Curated Daily Inspiration</span>
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-gray-900 max-w-4xl mx-auto">
-            A Universe of Insight at Your Fingertips
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-slate-900">
+            A universe of{" "}
+            <span className="bg-gradient-to-r from-indigo-500 via-sky-500 to-cyan-500 bg-clip-text text-transparent">
+              insight
+            </span>{" "}
+            in every quote.
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mt-6 leading-relaxed">
-            Explore a curated collection of powerful quotes from the world's
-            most brilliant minds. Find the inspiration you need for any moment.
+          <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mt-6 leading-relaxed">
+            Discover handpicked quotes from the world&apos;s greatest minds —
+            perfectly crafted for creators, learners, and everyday dreamers.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-10">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center pt-10">
             <a
               href="#featured"
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 flex items-center gap-2 justify-center"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-sky-500 text-white font-semibold shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:scale-[1.02] active:scale-[0.99] transition-all duration-300"
             >
-              <Zap className="w-5 h-5" /> Discover Quotes
+              <Zap className="w-4 h-4" />
+              <span>Browse Featured Quotes</span>
             </a>
           </div>
 
@@ -165,7 +164,7 @@ export default function Home() {
               href="https://www.youtube.com/channel/YOUR_CHANNEL"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-all duration-300 flex items-center gap-2 justify-center shadow-lg hover:shadow-xl"
+              className="px-6 py-3 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-all duration-300 flex items-center gap-2 justify-center shadow-md hover:shadow-lg"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -178,7 +177,7 @@ export default function Home() {
               href="https://www.instagram.com/YOUR_HANDLE"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 text-white font-semibold rounded-lg transition-all duration-300 flex items-center gap-2 justify-center shadow-lg hover:shadow-xl"
+              className="px-6 py-3 text-white font-semibold rounded-full transition-all duration-300 flex items-center gap-2 justify-center shadow-md hover:shadow-lg"
               style={{
                 background:
                   "linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
@@ -191,89 +190,101 @@ export default function Home() {
             </a>
           </div>
 
+          {/* Small quote highlight */}
+          <div className="mt-10 inline-flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/70 border border-slate-200 shadow-sm backdrop-blur">
+            <div className="flex items-center justify-center h-9 w-9 rounded-full bg-gradient-to-tr from-indigo-500 to-sky-500 text-white">
+              <QuoteIcon className="w-4 h-4" />
+            </div>
+            <p className="text-sm text-slate-700 text-left">
+              &ldquo;Great things grow quietly — but they grow.&rdquo;
+            </p>
+          </div>
+
           {/* Disclaimer */}
-          <div className="mt-12 pt-8 border-t border-gray-300">
-            <p className="text-gray-700 text-xs max-w-2xl mx-auto leading-relaxed">
-              <span className="font-semibold text-gray-800">Disclaimer:</span>{" "}
-              This content is made to educate and inspire. It's not meant to
-              offend, mislead, or violate anyone's rights. All quotes are
-              attributed to their original authors.
+          <div className="mt-12 pt-8 border-t border-slate-200">
+            <p className="text-slate-500 text-xs max-w-2xl mx-auto leading-relaxed">
+              <span className="font-semibold text-slate-700">Disclaimer:</span>{" "}
+              This content is made to educate and inspire. It&apos;s not meant
+              to offend, mislead, or violate anyone&apos;s rights. All quotes
+              are attributed to their original authors.
             </p>
           </div>
         </div>
       </section>
 
       {/* Inspirational Authors Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-24 bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50">
+      <section className="px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-slate-50 via-sky-50 to-indigo-50 border-t border-slate-100">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
               Meet Our Inspirational Icons
             </h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              Discover the visionary minds whose wisdom has shaped history and
-              continues to inspire millions around the world.
+            <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto">
+              Discover the visionary minds whose words continue to guide,
+              comfort, and spark new ideas every single day.
             </p>
           </div>
 
           {/* Authors Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
             {authorsData.map((author) => (
               <div key={author.id} className="group relative">
-                {/* Card Background with Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-200/40 to-yellow-200/40 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                {/* Soft glow */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-200/25 via-sky-200/20 to-cyan-200/25 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                <div className="relative bg-gradient-to-br from-white/90 to-orange-50/90 backdrop-blur-xl border border-orange-200/60 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-orange-300/80 transform group-hover:-translate-y-2">
-                  {/* Author Image */}
-                  <div className="relative h-80 overflow-hidden bg-gradient-to-br from-orange-300 to-amber-400">
+                <div className="relative bg-white/80 backdrop-blur-xl border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group-hover:-translate-y-2">
+                  {/* Author Image (no text, no color effect) */}
+                  <div className="relative h-64 overflow-hidden">
                     <img
                       src={author.image}
                       alt={author.name}
-                      className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-500"
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent"></div>
-                    {/* Icon Badge */}
-                    <div className="absolute top-4 right-4 bg-gradient-to-r from-orange-400 to-amber-400 p-3 rounded-full shadow-lg">
-                      <Heart className="w-5 h-5 text-white" />
+
+                    {/* Heart icon floating, optional but clean */}
+                    <div className="absolute top-4 right-4">
+                      <div className="bg-white/95 backdrop-blur-sm rounded-full p-2 shadow-md flex items-center justify-center">
+                        <Heart className="w-4 h-4 text-rose-500" />
+                      </div>
                     </div>
                   </div>
 
                   {/* Author Info */}
-                  <div className="p-8 text-gray-900">
-                    <h3 className="text-3xl font-bold mb-3 group-hover:text-orange-600 transition-colors duration-300">
-                      {author.name}
-                    </h3>
+                  <div className="p-6 flex flex-col gap-4">
+                    {/* Name */}
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.18em] text-slate-400 mb-1">
+                          Author
+                        </p>
+                        <h3 className="text-xl font-semibold text-slate-900">
+                          {author.name}
+                        </h3>
+                      </div>
+                    </div>
 
                     {/* Description */}
-                    <p className="text-gray-700 text-sm leading-relaxed mb-6">
+                    <p className="text-sm text-slate-600 leading-relaxed">
                       {author.description}
                     </p>
 
                     {/* Quote */}
-                    <div className="bg-gradient-to-r from-orange-100/80 to-yellow-100/80 border-l-4 border-orange-500 pl-5 py-4 mb-6 rounded-r-xl">
-                      <p className="text-sm italic text-orange-900 leading-relaxed">
-                        "{author.quote}"
-                      </p>
+                    <div className="bg-gradient-to-r from-indigo-50 to-sky-50 border border-indigo-100 rounded-2xl p-4 flex gap-3">
+                      <div className="flex-shrink-0">
+                        <div className="h-9 w-9 rounded-full bg-white flex items-center justify-center shadow-sm">
+                          <QuoteIcon className="w-4 h-4 text-indigo-500" />
+                        </div>
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-500 mb-1">
+                          Signature Quote
+                        </p>
+                        <p className="text-sm italic text-slate-800 leading-relaxed">
+                          &ldquo;{author.quote}&rdquo;
+                        </p>
+                      </div>
                     </div>
-
-                    {/* Learn More Button */}
-                    <button className="w-full px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-xl hover:from-orange-600 hover:to-amber-600 transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 group/btn">
-                      <span>Explore Story</span>
-                      <svg
-                        className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </button>
                   </div>
                 </div>
               </div>
@@ -284,35 +295,35 @@ export default function Home() {
 
       {/* Quotes Grid */}
       <section
-        className="grow px-4 sm:px-6 lg:px-8 pb-20 bg-gradient-to-br from-blue-50 via-slate-50 to-cyan-50"
+        className="grow px-4 sm:px-6 lg:px-8 pb-20 pt-16 bg-gradient-to-br from-slate-50 via-white to-sky-50 border-t border-slate-100"
         id="featured"
       >
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-10 pt-16 border-t border-gray-300">
+          <div className="flex items-center justify-between mb-10">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900">
-                Featured Quotes
+              <h2 className="text-3xl font-bold text-slate-900 flex items-center gap-3">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-tr from-indigo-500 to-sky-500 text-white shadow-sm">
+                  <QuoteIcon className="w-4 h-4" />
+                </span>
+                <span>Featured Quotes</span>
               </h2>
-              <p className="text-gray-700 mt-2">
-                {filteredQuotes.length === quotesData.length
-                  ? "Explore all inspiring quotes"
-                  : `Found ${filteredQuotes.length} quote${
-                      filteredQuotes.length !== 1 ? "s" : ""
-                    }`}
+              <p className="text-slate-600 mt-2 text-sm sm:text-base">
+                Explore {quotesData.length} handpicked quotes to inspire your
+                day.
               </p>
             </div>
           </div>
 
-          {filteredQuotes.length === 0 ? (
+          {quotesData.length === 0 ? (
             <div className="text-center py-12">
-              <Zap className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-700 text-lg">
-                No quotes found. Try a different search.
+              <Zap className="w-12 h-12 text-slate-300 mx-auto mb-4" />
+              <p className="text-slate-600 text-lg">
+                No quotes available right now.
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredQuotes.map((quote) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {quotesData.map((quote) => (
                 <QuoteCard
                   key={quote.id}
                   id={quote.id}

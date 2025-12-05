@@ -2,231 +2,353 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Heart, Lightbulb, Users, Target } from "lucide-react";
+import {
+  Heart,
+  Lightbulb,
+  Target,
+  Quote as QuoteIcon,
+  Sparkles,
+  Bot,
+  ShieldCheck,
+} from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen text-gray-900 flex flex-col bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-28 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-purple-100">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
-            About BeamQuotes
+      <section className="relative pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-slate-50 to-indigo-50" />
+          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[650px] h-[650px] rounded-full blur-3xl opacity-60 bg-[radial-gradient(circle_at_center,rgba(129,140,248,0.3),transparent_65%)]" />
+          <div className="absolute bottom-[-220px] right-[-140px] w-[520px] h-[520px] rounded-full blur-3xl opacity-50 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.3),transparent_65%)]" />
+        </div>
+
+        <div className="max-w-4xl mx-auto relative text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full border border-slate-200 bg-white/70 shadow-sm backdrop-blur">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-gradient-to-tr from-indigo-500 to-sky-500 text-white">
+              <QuoteIcon className="w-4 h-4" />
+            </span>
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-slate-500">
+              About BeamQuotes
+            </span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+            A peaceful home for{" "}
+            <span className="bg-gradient-to-r from-indigo-500 via-sky-500 to-cyan-500 bg-clip-text text-transparent">
+              safe, beautiful quotes
+            </span>
+            .
           </h1>
-          <p className="text-xl text-gray-700 leading-relaxed">
-            Discover the power of words. Our mission is to inspire, motivate,
-            and transform lives through carefully curated quotes from the
-            world's most influential thinkers and leaders.
+
+          <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            BeamQuotes is designed for people who love short, meaningful words —
+            especially creators who want calm, positive quotes for videos,
+            reels, and posts without worrying about hurting or offending anyone.
           </p>
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16">
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
-          {/* Mission */}
-          <div className="bg-white rounded-xl p-8 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow duration-300">
-            <div className="flex items-center mb-4">
-              <Target className="w-8 h-8 text-blue-600 mr-3" />
-              <h2 className="text-2xl font-bold text-gray-900">Our Mission</h2>
-            </div>
-            <p className="text-gray-700 leading-relaxed">
-              To provide a comprehensive platform where people can discover,
-              share, and find daily inspiration through meaningful quotes. We
-              believe that the right words at the right time can change
-              perspectives and spark positive action.
+      {/* What BeamQuotes Is */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1.1fr,0.9fr] gap-8 items-start">
+          {/* Text block */}
+          <div className="bg-white/80 rounded-3xl border border-slate-100 shadow-sm p-6 sm:p-8 backdrop-blur flex flex-col gap-4">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900">
+              What is BeamQuotes?
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              BeamQuotes is a curated library of quotes, short thoughts, and
+              gentle reminders. Many people use it as a base for YouTube Shorts,
+              Instagram Reels, and aesthetic quote images — or simply as a
+              quiet place to read something uplifting.
+            </p>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              Our focus is simple: keep things **beautiful**, **safe**, and
+              **easy to use**. Every part of the site — from colors to cards —
+              is meant to feel calm on your eyes and friendly to your audience.
             </p>
           </div>
 
-          {/* Vision */}
-          <div className="bg-white rounded-xl p-8 shadow-lg border border-purple-100 hover:shadow-xl transition-shadow duration-300">
-            <div className="flex items-center mb-4">
-              <Lightbulb className="w-8 h-8 text-purple-600 mr-3" />
-              <h2 className="text-2xl font-bold text-gray-900">Our Vision</h2>
+          {/* Key highlights */}
+          <div className="space-y-4">
+            <div className="bg-white/80 rounded-3xl border border-slate-100 shadow-sm p-5 flex gap-3 items-start">
+              <div className="h-9 w-9 rounded-2xl bg-gradient-to-tr from-indigo-500 to-sky-500 flex items-center justify-center text-white shadow-sm">
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-slate-900">
+                  Made for quote creators
+                </p>
+                <p className="text-xs sm:text-sm text-slate-600">
+                  Copy-friendly text, clean layout, and quotes that work nicely
+                  in portrait videos and posts.
+                </p>
+              </div>
             </div>
-            <p className="text-gray-700 leading-relaxed">
-              To create a global community of inspired individuals who leverage
-              the wisdom of great minds to achieve their goals, overcome
-              challenges, and build better versions of themselves.
+
+            <div className="bg-white/80 rounded-3xl border border-slate-100 shadow-sm p-5 flex gap-3 items-start">
+              <div className="h-9 w-9 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-white shadow-sm">
+                <Heart className="w-4 h-4" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-slate-900">
+                  Gentle, positive tone
+                </p>
+                <p className="text-xs sm:text-sm text-slate-600">
+                  We avoid harsh, hateful, or offensive messages. Our goal is
+                  calm motivation, not shock or negativity.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Values */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-16 bg-gradient-to-br from-slate-50 via-white to-sky-50 border-y border-slate-100">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
+              Our mission & values
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
+              Behind every quote is an intention: to make someone&apos;s scroll,
+              or day, feel a little bit lighter.
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* Why Choose Us */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-br from-amber-50 to-orange-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 text-center mb-12">
-            Why Choose BeamQuotes?
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Feature 1 */}
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <div className="flex items-start mb-4">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-600 text-white">
-                    <Heart className="h-6 w-6" />
-                  </div>
-                </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">
-                    Carefully Curated
-                  </h3>
-                  <p className="text-gray-600">
-                    Every quote is hand-picked to ensure quality, relevance, and
-                    inspirational value for our community.
-                  </p>
-                </div>
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {/* Mission */}
+            <div className="bg-white/80 rounded-3xl border border-slate-100 shadow-sm p-6 flex flex-col gap-3">
+              <div className="h-9 w-9 rounded-2xl bg-gradient-to-tr from-indigo-500 to-sky-500 flex items-center justify-center text-white shadow-sm">
+                <Target className="w-4 h-4" />
               </div>
+              <h3 className="text-base sm:text-lg font-semibold text-slate-900">
+                Clear mission
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                To share quotes that nudge people toward growth, reflection, and
+                kindness — never toward hate or harm.
+              </p>
             </div>
 
-            {/* Feature 2 */}
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <div className="flex items-start mb-4">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-md bg-purple-600 text-white">
-                    <Users className="h-6 w-6" />
-                  </div>
-                </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">
-                    Community Driven
-                  </h3>
-                  <p className="text-gray-600">
-                    Join thousands of users who share, discuss, and find daily
-                    inspiration from our growing collection.
-                  </p>
-                </div>
+            {/* Clarity */}
+            <div className="bg-white/80 rounded-3xl border border-slate-100 shadow-sm p-6 flex flex-col gap-3">
+              <div className="h-9 w-9 rounded-2xl bg-gradient-to-tr from-sky-500 to-cyan-400 flex items-center justify-center text-white shadow-sm">
+                <Lightbulb className="w-4 h-4" />
               </div>
+              <h3 className="text-base sm:text-lg font-semibold text-slate-900">
+                Simple clarity
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Short, clear lines that anyone can understand, reuse, or build a
+                story around — perfect for social content.
+              </p>
             </div>
 
-            {/* Feature 3 */}
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <div className="flex items-start mb-4">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-600 text-white">
-                    <Lightbulb className="h-6 w-6" />
-                  </div>
-                </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">
-                    Easy to Search
-                  </h3>
-                  <p className="text-gray-600">
-                    Advanced filtering by category, author, and powerful search
-                    functionality to find exactly what you need.
-                  </p>
-                </div>
+            {/* Respect */}
+            <div className="bg-white/80 rounded-3xl border border-slate-100 shadow-sm p-6 flex flex-col gap-3">
+              <div className="h-9 w-9 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-white shadow-sm">
+                <ShieldCheck className="w-4 h-4" />
               </div>
-            </div>
-
-            {/* Feature 4 */}
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <div className="flex items-start mb-4">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-600 text-white">
-                    <Target className="h-6 w-6" />
-                  </div>
-                </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">
-                    Daily Inspiration
-                  </h3>
-                  <p className="text-gray-600">
-                    Get inspired every day with quotes from wisdom leaders,
-                    entrepreneurs, philosophers, and more.
-                  </p>
-                </div>
-              </div>
+              <h3 className="text-base sm:text-lg font-semibold text-slate-900">
+                Respect for people
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                We avoid targeting groups, cultures, or individuals. Our content
+                aims to be globally respectful and safe to share.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our Inspirational Authors */}
+      {/* How We Use AI (Important Note) */}
       <section className="px-4 sm:px-6 lg:px-8 py-16">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-gray-900 text-center mb-12">
-            Featured Authors
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Author 1 */}
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 border border-blue-200">
-              <div className="mb-4">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 mx-auto flex items-center justify-center text-white font-bold text-2xl">
-                  SJ
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Steve Jobs
-              </h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Visionary entrepreneur and co-founder of Apple
-              </p>
-              <p className="text-gray-700 italic text-sm">
-                "The only way to do great work is to love what you do."
-              </p>
+        <div className="max-w-5xl mx-auto bg-white/80 rounded-3xl border border-slate-100 shadow-sm p-6 sm:p-8 backdrop-blur">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center mb-4">
+            <div className="h-10 w-10 rounded-2xl bg-gradient-to-tr from-indigo-500 to-sky-500 flex items-center justify-center text-white shadow-sm">
+              <Bot className="w-5 h-5" />
             </div>
-
-            {/* Author 2 */}
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 border border-purple-200">
-              <div className="mb-4">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 mx-auto flex items-center justify-center text-white font-bold text-2xl">
-                  MA
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Maya Angelou
-              </h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Celebrated poet, memoirist, and civil rights activist
-              </p>
-              <p className="text-gray-700 italic text-sm">
-                "I've learned that people will forget what you said and what you
-                did, but people will never forget how you made them feel."
-              </p>
-            </div>
-
-            {/* Author 3 */}
-            <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 border border-amber-200">
-              <div className="mb-4">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 mx-auto flex items-center justify-center text-white font-bold text-2xl">
-                  AE
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Albert Einstein
-              </h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Theoretical physicist and Nobel Prize winner
-              </p>
-              <p className="text-gray-700 italic text-sm">
-                "Imagination is more important than knowledge. Knowledge is
-                limited."
+            <div>
+              <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900">
+                How BeamQuotes uses AI (friendly note)
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                We want to be transparent about how some of the words and ideas
+                on this site are created.
               </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Call to Action */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Start Your Inspiration Journey Today
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Explore thousands of quotes, discover new perspectives, and find the
-            words that resonate with your journey.
+          <div className="grid sm:grid-cols-3 gap-4 mt-4 text-xs sm:text-sm text-slate-600">
+            <div className="space-y-2">
+              <p className="font-semibold text-slate-900">AI as a helper</p>
+              <ul className="space-y-1 list-disc list-inside">
+                <li>
+                  We use AI tools to help **generate quotes, scripts, and story
+                  ideas** in a friendly way.
+                </li>
+                <li>
+                  AI also helps create **image concepts and prompts** to match
+                  the mood of each quote.
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-slate-900">Human care & review</p>
+              <ul className="space-y-1 list-disc list-inside">
+                <li>
+                  Content is checked and shaped by humans to keep it calm,
+                  respectful, and easy to understand.
+                </li>
+                <li>
+                  We try to avoid copying specific personal or private content
+                  from real people.
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-slate-900">Our promise</p>
+              <ul className="space-y-1 list-disc list-inside">
+                <li>
+                  AI is used as a **creative assistant**, not to attack or harm
+                  anyone.
+                </li>
+                <li>
+                  If you ever feel something is not okay, you can simply choose
+                  not to use that quote in your content.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <p className="mt-5 text-[11px] sm:text-xs text-slate-500">
+            <span className="font-semibold">Friendly note:</span> BeamQuotes is
+            built to support creative work. AI helps us work faster and suggest
+            ideas, but our goal is always the same — keep things kind, safe, and
+            inspiring for you and your audience.
           </p>
-          <a
-            href="/quotes"
-            className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-50 transition-colors duration-300 shadow-lg"
-          >
-            Browse All Quotes
-          </a>
+        </div>
+      </section>
+
+      {/* How BeamQuotes Helps You */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+          <div className="space-y-5">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+              Built with creators and viewers in mind
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              Many of our users run quote channels, aesthetic pages, or study /
+              motivation accounts. BeamQuotes aims to give you ready-to-use
+              lines and ideas that feel clean and safe on every platform.
+            </p>
+
+            <div className="space-y-4">
+              <div className="flex gap-3">
+                <div className="mt-1 h-7 w-7 rounded-full bg-gradient-to-tr from-indigo-500 to-sky-500 text-white flex items-center justify-center text-xs font-semibold">
+                  1
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-slate-900">
+                    Find a quote that fits your mood
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600">
+                    Browse by categories like Motivation, Wisdom, Success, and
+                    Inspiration to match your video or post idea.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <div className="mt-1 h-7 w-7 rounded-full bg-gradient-to-tr from-sky-500 to-cyan-400 text-white flex items-center justify-center text-xs font-semibold">
+                  2
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-slate-900">
+                    Copy in one click
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600">
+                    Use the copy button on quote cards to grab text for your
+                    YouTube Shorts, Reels, captions, and thumbnails.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <div className="mt-1 h-7 w-7 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 text-white flex items-center justify-center text-xs font-semibold">
+                  3
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-slate-900">
+                    Stay consistent with less stress
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600">
+                    Instead of thinking from scratch every day, use BeamQuotes
+                    as your soft starting point for inspiration.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Small example panel */}
+          <div className="bg-white/80 rounded-3xl border border-slate-100 shadow-sm p-6 sm:p-8 backdrop-blur">
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <div className="h-9 w-9 rounded-2xl bg-gradient-to-tr from-indigo-500 to-sky-500 flex items-center justify-center text-white shadow-sm">
+                  <QuoteIcon className="w-4 h-4" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-[0.18em]">
+                    Example BeamQuote
+                  </p>
+                  <p className="text-xs text-slate-500">
+                    The kind of calm, short line you might see.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-slate-100 bg-gradient-to-br from-slate-50 via-white to-sky-50 p-5 flex flex-col gap-3">
+                <p className="text-sm sm:text-base font-semibold text-slate-900 leading-relaxed">
+                  &ldquo;Small steady steps can quietly lead you to places your
+                  fear never believed in.&rdquo;
+                </p>
+                <p className="text-xs text-slate-500">
+                  Works great as a Shorts caption, reel overlay, or quote
+                  screen.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="max-w-4xl mx-auto rounded-3xl bg-gradient-to-r from-indigo-500 via-sky-500 to-cyan-500 text-white px-6 sm:px-10 py-10 sm:py-12 shadow-lg">
+          <div className="text-center space-y-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold">
+              Ready to explore some quotes?
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg text-indigo-50 max-w-2xl mx-auto">
+              Take a look at our curated collection and pick the lines that feel
+              right for your channel, your page, or your own daily motivation.
+            </p>
+            <a
+              href="/quotes"
+              className="inline-flex items-center justify-center mt-2 px-7 py-3 rounded-full bg-white text-slate-900 font-semibold text-sm sm:text-base hover:bg-slate-50 transition-colors duration-300 shadow-md"
+            >
+              Browse all quotes
+            </a>
+          </div>
         </div>
       </section>
 

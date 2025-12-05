@@ -2,32 +2,35 @@ import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-blue-50 to-purple-50 text-gray-800">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="bg-gradient-to-r from-slate-50 via-sky-50 to-indigo-50 text-slate-800 border-t border-slate-100">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg">
+              <div className="p-2 bg-gradient-to-br from-indigo-500 to-sky-500 rounded-lg shadow-sm">
                 <span className="text-white font-bold text-lg">Q</span>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-sky-500 bg-clip-text text-transparent">
                 Quotes
               </span>
             </div>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-slate-600 leading-relaxed">
               Discover inspiring quotes from great minds around the world.
+              Perfect for your daily motivation and creative projects.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-gray-900 font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <h3 className="text-slate-900 font-semibold mb-4 text-sm uppercase tracking-[0.15em]">
+              Quick Links
+            </h3>
+            <ul className="space-y-2 text-sm">
               <li>
                 <a
                   href="/"
-                  className="text-gray-700 hover:text-blue-600 transition-colors duration-200 text-sm"
+                  className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
                 >
                   Home
                 </a>
@@ -35,7 +38,7 @@ export default function Footer() {
               <li>
                 <a
                   href="/quotes"
-                  className="text-gray-700 hover:text-blue-600 transition-colors duration-200 text-sm"
+                  className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
                 >
                   Quotes
                 </a>
@@ -43,7 +46,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:text-blue-600 transition-colors duration-200 text-sm"
+                  className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
                 >
                   About Us
                 </a>
@@ -53,12 +56,14 @@ export default function Footer() {
 
           {/* Categories */}
           <div>
-            <h3 className="text-gray-900 font-semibold mb-4">Categories</h3>
-            <ul className="space-y-2">
+            <h3 className="text-slate-900 font-semibold mb-4 text-sm uppercase tracking-[0.15em]">
+              Categories
+            </h3>
+            <ul className="space-y-2 text-sm">
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:text-blue-600 transition-colors duration-200 text-sm"
+                  className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
                 >
                   Motivation
                 </a>
@@ -66,7 +71,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:text-blue-600 transition-colors duration-200 text-sm"
+                  className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
                 >
                   Success
                 </a>
@@ -74,7 +79,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:text-blue-600 transition-colors duration-200 text-sm"
+                  className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
                 >
                   Wisdom
                 </a>
@@ -82,7 +87,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-700 hover:text-blue-600 transition-colors duration-200 text-sm"
+                  className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
                 >
                   Inspiration
                 </a>
@@ -92,61 +97,61 @@ export default function Footer() {
 
           {/* Contact & Social */}
           <div>
-            <h3 className="text-gray-900 font-semibold mb-4">
+            <h3 className="text-slate-900 font-semibold mb-4 text-sm uppercase tracking-[0.15em]">
               Connect With Us
             </h3>
-            <div className="flex space-x-4 mb-4">
+            <div className="flex space-x-3 mb-4">
               <a
                 href="#"
-                className="bg-blue-100 text-blue-600 p-2 rounded-lg hover:bg-blue-200 transition-colors duration-200"
+                className="bg-white/80 border border-slate-200 text-slate-700 p-2 rounded-lg hover:bg-slate-50 hover:border-indigo-200 transition-colors duration-200 shadow-sm"
               >
-                <Github className="w-5 h-5" />
+                <Github className="w-4 h-4" />
               </a>
               <a
                 href="#"
-                className="bg-blue-100 text-blue-600 p-2 rounded-lg hover:bg-blue-200 transition-colors duration-200"
+                className="bg-white/80 border border-slate-200 text-slate-700 p-2 rounded-lg hover:bg-slate-50 hover:border-indigo-200 transition-colors duration-200 shadow-sm"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-4 h-4" />
               </a>
               <a
                 href="#"
-                className="bg-blue-100 text-blue-600 p-2 rounded-lg hover:bg-blue-200 transition-colors duration-200"
+                className="bg-white/80 border border-slate-200 text-slate-700 p-2 rounded-lg hover:bg-slate-50 hover:border-indigo-200 transition-colors duration-200 shadow-sm"
               >
-                <Twitter className="w-5 h-5" />
+                <Twitter className="w-4 h-4" />
               </a>
               <a
                 href="#"
-                className="bg-blue-100 text-blue-600 p-2 rounded-lg hover:bg-blue-200 transition-colors duration-200"
+                className="bg-white/80 border border-slate-200 text-slate-700 p-2 rounded-lg hover:bg-slate-50 hover:border-indigo-200 transition-colors duration-200 shadow-sm"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="w-4 h-4" />
               </a>
             </div>
-            <p className="text-xs text-gray-600">info@quotes.com</p>
+            <p className="text-xs text-slate-600">info@quotes.com</p>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-300 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-gray-700">
-              &copy; 2025 Quotes. All rights reserved.
+        <div className="border-t border-slate-200 pt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
+            <p className="text-xs sm:text-sm text-slate-600">
+              &copy; {new Date().getFullYear()} Quotes. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
+            <div className="flex space-x-4 text-xs sm:text-sm">
               <a
                 href="#"
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 text-sm"
+                className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
               >
                 Privacy Policy
               </a>
               <a
                 href="#"
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 text-sm"
+                className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
               >
                 Terms of Service
               </a>
               <a
                 href="#"
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200 text-sm"
+                className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
               >
                 Contact
               </a>
