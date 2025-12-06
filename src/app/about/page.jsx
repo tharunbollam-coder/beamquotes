@@ -45,9 +45,9 @@ export default function AboutPage() {
           </h1>
 
           <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
-            BeamQuotes is designed for people who love short, meaningful words —
-            especially creators who want calm, positive quotes for videos,
-            reels, and posts without worrying about hurting or offending anyone.
+            BeamQuotes is designed for anyone who loves short, meaningful words
+            and a calm, positive space to reflect, learn, and feel inspired —
+            without worrying about harsh or harmful messages.
           </p>
         </div>
       </section>
@@ -62,14 +62,15 @@ export default function AboutPage() {
             </h2>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
               BeamQuotes is a curated library of quotes, short thoughts, and
-              gentle reminders. Many people use it as a base for YouTube Shorts,
-              Instagram Reels, and aesthetic quote images — or simply as a
-              quiet place to read something uplifting.
+              gentle reminders. You can use it to find words for your day, for
+              your journal, for sharing with friends, or simply as a quiet place
+              to read something uplifting.
             </p>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              Our focus is simple: keep things **beautiful**, **safe**, and
-              **easy to use**. Every part of the site — from colors to cards —
-              is meant to feel calm on your eyes and friendly to your audience.
+              Our focus is simple: keep things <strong>beautiful</strong>,{" "}
+              <strong>safe</strong>, and <strong>easy to understand</strong>.
+              Every part of the site — from colors to cards — is meant to feel
+              calm on your eyes and kind to your mind.
             </p>
           </div>
 
@@ -81,11 +82,11 @@ export default function AboutPage() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-slate-900">
-                  Made for quote creators
+                  Easy to revisit & share
                 </p>
                 <p className="text-xs sm:text-sm text-slate-600">
-                  Copy-friendly text, clean layout, and quotes that work nicely
-                  in portrait videos and posts.
+                  Short, clear quotes that you can remember easily, save for
+                  later, or share in messages, notes, and posts if you wish.
                 </p>
               </div>
             </div>
@@ -100,7 +101,8 @@ export default function AboutPage() {
                 </p>
                 <p className="text-xs sm:text-sm text-slate-600">
                   We avoid harsh, hateful, or offensive messages. Our goal is
-                  calm motivation, not shock or negativity.
+                  calm encouragement and thoughtful reflection — not shock or
+                  negativity.
                 </p>
               </div>
             </div>
@@ -117,7 +119,8 @@ export default function AboutPage() {
             </h2>
             <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
               Behind every quote is an intention: to make someone&apos;s scroll,
-              or day, feel a little bit lighter.
+              pause, or quiet moment feel a little bit lighter and more
+              thoughtful.
             </p>
           </div>
 
@@ -131,8 +134,9 @@ export default function AboutPage() {
                 Clear mission
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                To share quotes that nudge people toward growth, reflection, and
-                kindness — never toward hate or harm.
+                To share quotes that gently nudge people toward growth,
+                reflection, and kindness — never toward hate, harm, or
+                disrespect.
               </p>
             </div>
 
@@ -145,8 +149,8 @@ export default function AboutPage() {
                 Simple clarity
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Short, clear lines that anyone can understand, reuse, or build a
-                story around — perfect for social content.
+                Short, clear lines that anyone can understand, remember, or
+                build a personal meaning around in everyday life.
               </p>
             </div>
 
@@ -160,7 +164,7 @@ export default function AboutPage() {
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 We avoid targeting groups, cultures, or individuals. Our content
-                aims to be globally respectful and safe to share.
+                is meant to be globally respectful and safe to read or share.
               </p>
             </div>
           </div>
@@ -179,8 +183,8 @@ export default function AboutPage() {
                 How BeamQuotes uses AI (friendly note)
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                We want to be transparent about how some of the words and ideas
-                on this site are created.
+                We want to be open about how some of the words and ideas on this
+                site are created.
               </p>
             </div>
           </div>
@@ -190,12 +194,12 @@ export default function AboutPage() {
               <p className="font-semibold text-slate-900">AI as a helper</p>
               <ul className="space-y-1 list-disc list-inside">
                 <li>
-                  We use AI tools to help **generate quotes, scripts, and story
-                  ideas** in a friendly way.
+                  We use AI tools to help generate quotes, reflections, and
+                  story ideas in a friendly, calm way.
                 </li>
                 <li>
-                  AI also helps create **image concepts and prompts** to match
-                  the mood of each quote.
+                  AI also helps create image concepts and prompts that match the
+                  mood of different quotes.
                 </li>
               </ul>
             </div>
@@ -204,7 +208,7 @@ export default function AboutPage() {
               <p className="font-semibold text-slate-900">Human care & review</p>
               <ul className="space-y-1 list-disc list-inside">
                 <li>
-                  Content is checked and shaped by humans to keep it calm,
+                  Content is reviewed and shaped by humans to keep it kind,
                   respectful, and easy to understand.
                 </li>
                 <li>
@@ -218,12 +222,13 @@ export default function AboutPage() {
               <p className="font-semibold text-slate-900">Our promise</p>
               <ul className="space-y-1 list-disc list-inside">
                 <li>
-                  AI is used as a **creative assistant**, not to attack or harm
-                  anyone.
+                  AI is used as a creative assistant, not to attack, harm, or
+                  target anyone.
                 </li>
                 <li>
-                  If you ever feel something is not okay, you can simply choose
-                  not to use that quote in your content.
+                  If something doesn&apos;t feel right to you, you can simply
+                  skip that quote — you&apos;re always in control of what you
+                  keep.
                 </li>
               </ul>
             </div>
@@ -231,9 +236,41 @@ export default function AboutPage() {
 
           <p className="mt-5 text-[11px] sm:text-xs text-slate-500">
             <span className="font-semibold">Friendly note:</span> BeamQuotes is
-            built to support creative work. AI helps us work faster and suggest
-            ideas, but our goal is always the same — keep things kind, safe, and
-            inspiring for you and your audience.
+            built to support reflection and inspiration. AI helps with ideas and
+            wording, but our goal is always the same — keep things kind, safe,
+            and thoughtful for everyone.
+          </p>
+        </div>
+      </section>
+
+      {/* Quotes & Authors Transparency */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="max-w-5xl mx-auto bg-white/80 rounded-3xl border border-slate-100 shadow-sm p-6 sm:p-8 backdrop-blur flex flex-col gap-3">
+          <div className="flex items-center gap-3 mb-1">
+            <div className="h-9 w-9 rounded-2xl bg-gradient-to-tr from-indigo-500 to-sky-500 flex items-center justify-center text-white shadow-sm">
+              <QuoteIcon className="w-4 h-4" />
+            </div>
+            <h2 className="text-lg sm:text-xl font-extrabold text-slate-900">
+              Quotes, authors & public-domain lines
+            </h2>
+          </div>
+
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            BeamQuotes includes a mix of:
+          </p>
+          <ul className="text-xs sm:text-sm text-slate-600 leading-relaxed list-disc list-inside space-y-1">
+            <li>AI-assisted original inspirational quotes and thoughts</li>
+            <li>
+              Well-known quotes from authors where the text is in the public
+              domain or widely available from public sources
+            </li>
+          </ul>
+
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2">
+            Whenever possible, we show the author&apos;s name and try to avoid
+            misattribution. If you ever feel that a quote or credit on
+            BeamQuotes needs correction, you&apos;re welcome to contact us, and
+            we&apos;ll gladly review it.
           </p>
         </div>
       </section>
@@ -243,12 +280,12 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-5">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-              Built with creators and viewers in mind
+              How BeamQuotes fits into your day
             </h2>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              Many of our users run quote channels, aesthetic pages, or study /
-              motivation accounts. BeamQuotes aims to give you ready-to-use
-              lines and ideas that feel clean and safe on every platform.
+              Some people like to use these quotes in journals, wallpapers,
+              messages, or quiet reading time. Others simply open the site when
+              they want a gentle reminder to keep going.
             </p>
 
             <div className="space-y-4">
@@ -258,11 +295,12 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-slate-900">
-                    Find a quote that fits your mood
+                    Find a quote that matches your moment
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600">
                     Browse by categories like Motivation, Wisdom, Success, and
-                    Inspiration to match your video or post idea.
+                    Inspiration to find words that fit how you feel or what you
+                    need.
                   </p>
                 </div>
               </div>
@@ -273,11 +311,11 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-slate-900">
-                    Copy in one click
+                    Save or share if you like
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600">
-                    Use the copy button on quote cards to grab text for your
-                    YouTube Shorts, Reels, captions, and thumbnails.
+                    You can copy a quote to keep in your notes, send to
+                    someone, or use in a personal project or design.
                   </p>
                 </div>
               </div>
@@ -288,11 +326,11 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-slate-900">
-                    Stay consistent with less stress
+                    Return whenever you need a reminder
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600">
-                    Instead of thinking from scratch every day, use BeamQuotes
-                    as your soft starting point for inspiration.
+                    Instead of searching all over the internet, you can come
+                    back here for a calm collection in one place.
                   </p>
                 </div>
               </div>
@@ -322,12 +360,46 @@ export default function AboutPage() {
                   fear never believed in.&rdquo;
                 </p>
                 <p className="text-xs text-slate-500">
-                  Works great as a Shorts caption, reel overlay, or quote
-                  screen.
+                  You might keep this in a journal, use it as a wallpaper line,
+                  or just remember it on a difficult day.
                 </p>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Content Disclaimer */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="max-w-5xl mx-auto bg-white/80 rounded-3xl border border-slate-100 shadow-sm p-6 sm:p-8 backdrop-blur">
+          <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 mb-3">
+            Content disclaimer
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
+            All content on BeamQuotes is intended <strong>only</strong> for{" "}
+            <strong>educational</strong>, <strong>reflective</strong>, and{" "}
+            <strong>inspirational</strong> purposes.
+          </p>
+          <ul className="text-xs sm:text-sm text-slate-600 space-y-2 list-disc list-inside mb-3">
+            <li>
+              It is <strong>not</strong> professional advice (medical, legal,
+              financial, mental health, or otherwise).
+            </li>
+            <li>
+              It is <strong>not</strong> meant to harm, offend, target, or
+              mislead any reader or viewer.
+            </li>
+            <li>
+              You are always encouraged to think for yourself, seek qualified
+              professionals when needed, and ignore any quote that doesn&apos;t
+              feel right to you.
+            </li>
+          </ul>
+          <p className="text-[11px] sm:text-xs text-slate-500">
+            If you ever feel that a piece of content on BeamQuotes could be
+            improved or might hurt someone, we appreciate you choosing not to
+            spread it further and letting us know through our contact channels.
+          </p>
         </div>
       </section>
 
@@ -339,8 +411,8 @@ export default function AboutPage() {
               Ready to explore some quotes?
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-indigo-50 max-w-2xl mx-auto">
-              Take a look at our curated collection and pick the lines that feel
-              right for your channel, your page, or your own daily motivation.
+              Take a look at our curated collection and find lines that feel
+              right for your day, your thoughts, or your personal projects.
             </p>
             <a
               href="/quotes"

@@ -138,19 +138,31 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4 text-xs sm:text-sm">
               <a
-                href="#"
+                href="/privacy"
                 className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
               >
                 Privacy Policy
               </a>
               <a
-                href="#"
+                href="/terms"
                 className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
               >
                 Terms of Service
               </a>
               <a
-                href="#"
+                href="/cookies"
+                className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
+              >
+                Cookies
+              </a>
+              <a
+                href="/disclaimer"
+                className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
+              >
+                Disclaimer
+              </a>
+              <a
+                href="/contact"
                 className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
               >
                 Contact
