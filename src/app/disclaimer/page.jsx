@@ -11,7 +11,7 @@ export default function DisclaimerPage() {
 
       {/* Header */}
       <section className="pt-28 pb-16 px-4 sm:px-6 lg:px-8 text-center relative">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-50 via-white to-indigo-50" />
+        <div className="absolute inset-0 -z-10 bg-linear-to-br from-sky-50 via-white to-indigo-50" />
 
         <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full border border-slate-200 bg-white/70 backdrop-blur shadow-sm">
           <AlertCircle className="w-4 h-4 text-indigo-600" />
