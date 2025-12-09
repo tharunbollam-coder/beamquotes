@@ -1,134 +1,46 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import QuoteCard from "@/components/QuoteCard";
-import { ChevronLeft, ChevronRight, Search, Quote as QuoteIcon } from "lucide-react";
-
-const quotesData = [
-  {
-    id: 1,
-    text: "The only way to do great work is to love what you do.",
-    author: "Steve Jobs",
-    category: "Motivation",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 2,
-    text: "Innovation distinguishes between a leader and a follower.",
-    author: "Steve Jobs",
-    category: "Success",
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 3,
-    text: "Life is what happens when you're busy making other plans.",
-    author: "John Lennon",
-    category: "Wisdom",
-    image:
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 4,
-    text: "The future belongs to those who believe in the beauty of their dreams.",
-    author: "Eleanor Roosevelt",
-    category: "Inspiration",
-    image:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 5,
-    text: "It is during our darkest moments that we must focus to see the light.",
-    author: "Aristotle",
-    category: "Wisdom",
-    image:
-      "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 6,
-    text: "The only impossible journey is the one you never begin.",
-    author: "Tony Robbins",
-    category: "Motivation",
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 7,
-    text: "Success is not final, failure is not fatal.",
-    author: "Winston Churchill",
-    category: "Success",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 8,
-    text: "The best time to plant a tree was 20 years ago. The second best time is now.",
-    author: "Chinese Proverb",
-    category: "Wisdom",
-    image:
-      "https://images.unsplash.com/photo-1517411903706-6f3ee90583f1?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 9,
-    text: "Your time is limited, don't waste it living someone else's life.",
-    author: "Steve Jobs",
-    category: "Motivation",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 10,
-    text: "The only way to do something great is to love what you do.",
-    author: "Steve Jobs",
-    category: "Success",
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 11,
-    text: "Don't let yesterday take up too much of today.",
-    author: "Will Rogers",
-    category: "Wisdom",
-    image:
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 12,
-    text: "You miss 100% of the shots you don't take.",
-    author: "Wayne Gretzky",
-    category: "Motivation",
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-];
+import { ChevronLeft, ChevronRight, Search, Quote as QuoteIcon, Loader2 } from "lucide-react";
+import { getAllQuotes } from "@/sanity/lib/queries";
 
 const ITEMS_PER_PAGE = 6;
 
-// Unique categories
-const getUniqueCategories = () => {
-  return [...new Set(quotesData.map((q) => q.category))].sort();
-};
-
 export default function QuotesPage() {
+  const [quotes, setQuotes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [copied, setCopied] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+
+  // Fetch quotes from Sanity
+  useEffect(() => {
+    const fetchQuotes = async () => {
+      try {
+        setLoading(true);
+        const data = await getAllQuotes();
+        setQuotes(data);
+      } catch (err) {
+        console.error('Error fetching quotes:', err);
+        setError('Failed to load quotes. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchQuotes();
+  }, []);
+
+  // Get unique categories from the fetched quotes
+  const getUniqueCategories = () => {
+    const categories = [...new Set(quotes.map((q) => q.category))].sort();
+    return categories;
+  };
 
   const handleCopy = (text, id) => {
     navigator.clipboard.writeText(text);
@@ -155,11 +67,14 @@ export default function QuotesPage() {
   };
 
   // Filter quotes (search includes text, author, category; filter only by category)
-  const filteredQuotes = quotesData.filter((quote) => {
+  const filteredQuotes = quotes.filter((quote) => {
+    if (!quote) return false;
+    
+    const searchLower = searchTerm.toLowerCase();
     const matchesSearch =
-      quote.text.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      quote.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      quote.category.toLowerCase().includes(searchTerm.toLowerCase());
+      (quote.text?.toLowerCase().includes(searchLower) ||
+      quote.author?.toLowerCase().includes(searchLower) ||
+      quote.category?.toLowerCase().includes(searchLower)) ?? false;
 
     const matchesCategory =
       selectedCategory === "All" || quote.category === selectedCategory;
@@ -168,10 +83,48 @@ export default function QuotesPage() {
   });
 
   // Pagination
-  const totalPages = Math.ceil(filteredQuotes.length / ITEMS_PER_PAGE) || 1;
+  const totalPages = Math.ceil(filteredQuotes.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
-  const currentQuotes = filteredQuotes.slice(startIndex, endIndex);
+  const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, filteredQuotes.length);
+  const paginatedQuotes = filteredQuotes.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-grow flex items-center justify-center">
+          <div className="text-center">
+            <Loader2 className="w-8 h-8 animate-spin text-sky-500 mx-auto mb-4" />
+            <p className="text-slate-600">Loading quotes...</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-grow flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-red-500 mb-4">{error}</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-md transition-colors"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   const handlePageChange = (page) => {
     const nextPage = Math.max(1, Math.min(page, totalPages));
@@ -208,7 +161,7 @@ export default function QuotesPage() {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
               Explore our complete collection of{" "}
               <span className="bg-gradient-to-r from-indigo-500 via-sky-500 to-cyan-500 bg-clip-text text-transparent">
-                {quotesData.length} inspiring quotes
+                {quotes.length} inspiring quotes
               </span>
             </h1>
 
@@ -285,7 +238,7 @@ export default function QuotesPage() {
       {/* Quotes Grid */}
       <section className="flex-grow px-4 sm:px-6 lg:px-8 pb-20 pt-4 bg-gradient-to-br from-slate-50 via-white to-sky-50 border-t border-slate-100">
         <div className="max-w-6xl mx-auto">
-          {currentQuotes.length === 0 ? (
+          {paginatedQuotes.length === 0 ? (
             <div className="text-center py-16">
               <Search className="w-16 h-16 text-slate-300 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-slate-800 mb-2">
@@ -298,10 +251,10 @@ export default function QuotesPage() {
           ) : (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                {currentQuotes.map((quote) => (
+                {paginatedQuotes.map((quote) => (
                   <QuoteCard
-                    key={quote.id}
-                    id={quote.id}
+                    key={quote._id}
+                    id={quote._id}
                     text={quote.text}
                     author={quote.author}
                     category={quote.category}

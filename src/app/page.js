@@ -1,68 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import QuoteCard from "@/components/QuoteCard";
-import { Zap, Heart, Quote as QuoteIcon } from "lucide-react";
+import { Zap, Heart, Quote as QuoteIcon, Loader2 } from "lucide-react";
+import { getFeaturedQuotes } from "@/sanity/lib/queries";
 
-const quotesData = [
-  {
-    id: 1,
-    text: "The only way to do great work is to love what you do.",
-    author: "Steve Jobs",
-    category: "Motivation",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 2,
-    text: "Innovation distinguishes between a leader and a follower.",
-    author: "Steve Jobs",
-    category: "Success",
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 3,
-    text: "Life is what happens when you're busy making other plans.",
-    author: "John Lennon",
-    category: "Wisdom",
-    image:
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 4,
-    text: "The future belongs to those who believe in the beauty of their dreams.",
-    author: "Eleanor Roosevelt",
-    category: "Inspiration",
-    image:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 5,
-    text: "It is during our darkest moments that we must focus to see the light.",
-    author: "Aristotle",
-    category: "Wisdom",
-    image:
-      "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-  {
-    id: 6,
-    text: "The only impossible journey is the one you never begin.",
-    author: "Tony Robbins",
-    category: "Motivation",
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=500&fit=crop",
-    youtubeUrl: "https://www.youtube.com/shorts/dQw4w9WgXcQ",
-  },
-];
-
+// Sample authors data (can be moved to Sanity later if needed)
 const authorsData = [
   {
     id: 1,
@@ -96,6 +41,26 @@ const authorsData = [
 
 export default function Home() {
   const [copied, setCopied] = useState({});
+  const [quotes, setQuotes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchQuotes = async () => {
+      try {
+        setLoading(true);
+        const data = await getFeaturedQuotes();
+        setQuotes(data);
+      } catch (err) {
+        console.error('Error fetching quotes:', err);
+        setError('Failed to load quotes. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchQuotes();
+  }, []);
 
   const handleCopy = (text, id) => {
     navigator.clipboard.writeText(text);
@@ -157,39 +122,6 @@ export default function Home() {
             </a>
           </div>
 
-          {/* Social Media Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-            {/* YouTube Button */}
-            <a
-              href="https://www.youtube.com/channel/YOUR_CHANNEL"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-all duration-300 flex items-center gap-2 justify-center shadow-md hover:shadow-lg"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-              </svg>
-              YouTube
-            </a>
-
-            {/* Instagram Button */}
-            <a
-              href="https://www.instagram.com/YOUR_HANDLE"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 text-white font-semibold rounded-full transition-all duration-300 flex items-center gap-2 justify-center shadow-md hover:shadow-lg"
-              style={{
-                background:
-                  "linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
-              }}
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.265-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z" />
-              </svg>
-              Instagram
-            </a>
-          </div>
-
           {/* Small quote highlight */}
           <div className="mt-10 inline-flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/70 border border-slate-200 shadow-sm backdrop-blur">
             <div className="flex items-center justify-center h-9 w-9 rounded-full bg-gradient-to-tr from-indigo-500 to-sky-500 text-white">
@@ -197,16 +129,6 @@ export default function Home() {
             </div>
             <p className="text-sm text-slate-700 text-left">
               &ldquo;Great things grow quietly — but they grow.&rdquo;
-            </p>
-          </div>
-
-          {/* Disclaimer */}
-          <div className="mt-12 pt-8 border-t border-slate-200">
-            <p className="text-slate-500 text-xs max-w-2xl mx-auto leading-relaxed">
-              <span className="font-semibold text-slate-700">Disclaimer:</span>{" "}
-              This content is made to educate and inspire. It&apos;s not meant
-              to offend, mislead, or violate anyone&apos;s rights. All quotes
-              are attributed to their original authors.
             </p>
           </div>
         </div>
@@ -308,13 +230,16 @@ export default function Home() {
                 <span>Featured Quotes</span>
               </h2>
               <p className="text-slate-600 mt-2 text-sm sm:text-base">
-                Explore {quotesData.length} handpicked quotes to inspire your
-                day.
+                {loading ? (
+                  <span>Loading quotes...</span>
+                ) : (
+                  `Explore ${quotes.length} handpicked quotes to inspire your day.`
+                )}
               </p>
             </div>
           </div>
 
-          {quotesData.length === 0 ? (
+          {!loading && quotes.length === 0 ? (
             <div className="text-center py-12">
               <Zap className="w-12 h-12 text-slate-300 mx-auto mb-4" />
               <p className="text-slate-600 text-lg">
@@ -323,10 +248,10 @@ export default function Home() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {quotesData.map((quote) => (
+              {quotes.map((quote) => (
                 <QuoteCard
-                  key={quote.id}
-                  id={quote.id}
+                  key={quote._id}
+                  id={quote._id}
                   text={quote.text}
                   author={quote.author}
                   category={quote.category}

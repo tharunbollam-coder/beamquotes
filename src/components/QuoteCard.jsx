@@ -87,14 +87,14 @@ export default function QuoteCard({
           <button
             onClick={() => onCopy(text, id)}
             className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
-              copied[id]
+              copied && copied[id]
                 ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
                 : "bg-slate-50 text-slate-600 border border-slate-100 hover:bg-slate-100"
             }`}
             title="Copy quote"
           >
             <Copy className="w-4 h-4 sm:w-4 sm:h-4" />
-            <span>{copied[id] ? "Copied" : "Copy"}</span>
+            <span>{copied && copied[id] ? "Copied" : "Copy"}</span>
           </button>
 
           <a
