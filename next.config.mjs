@@ -2,15 +2,21 @@
 const nextConfig = {
   reactCompiler: true,
   images: {
-    domains: [
-      'cdn.sanity.io',
-      'pub-10a3382f82964eadb97519ab0c95bc47.r2.dev',
-      '*.r2.dev'
-    ],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'cdn.sanity.io',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'pub-10a3382f82964eadb97519ab0c95bc47.r2.dev',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.r2.dev',
+        pathname: '/**',
       },
     ],
     minimumCacheTTL: 60, // 1 minute

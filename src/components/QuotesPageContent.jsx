@@ -4,10 +4,17 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 
 // Import QuoteCard with SSR disabled to avoid hydration issues
-const QuoteCard = dynamic(() => import("@/components/QuoteCard"), { ssr: false });
-import { ChevronLeft, ChevronRight, Search, Quote as QuoteIcon } from "lucide-react";
+const QuoteCard = dynamic(() => import("@/components/QuoteCard"), {
+  ssr: false,
+});
+import {
+  ChevronLeft,
+  ChevronRight,
+  Search,
+  Quote as QuoteIcon,
+} from "lucide-react";
 
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE = 9;
 
 function QuotesPageContent({ quotes: initialQuotes = [] }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +25,9 @@ function QuotesPageContent({ quotes: initialQuotes = [] }) {
 
   // Get unique categories from the fetched quotes
   const getUniqueCategories = () => {
-    const categories = [...new Set(initialQuotes.map((q) => q.category))].sort();
+    const categories = [
+      ...new Set(initialQuotes.map((q) => q.category)),
+    ].sort();
     return categories;
   };
 
@@ -59,7 +68,8 @@ function QuotesPageContent({ quotes: initialQuotes = [] }) {
     const matchesSearch =
       (quote.text?.toLowerCase().includes(searchLower) ||
         quote.author?.toLowerCase().includes(searchLower) ||
-        quote.category?.toLowerCase().includes(searchLower)) ?? false;
+        quote.category?.toLowerCase().includes(searchLower)) ??
+      false;
 
     const matchesCategory =
       selectedCategory === "All" || quote.category === selectedCategory;
@@ -230,7 +240,8 @@ function QuotesPageContent({ quotes: initialQuotes = [] }) {
                         if (
                           pageNum === 1 ||
                           pageNum === totalPages ||
-                          (pageNum >= currentPage - 1 && pageNum <= currentPage + 1)
+                          (pageNum >= currentPage - 1 &&
+                            pageNum <= currentPage + 1)
                         ) {
                           return (
                             <button

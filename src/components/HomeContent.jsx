@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import QuoteCard from "@/components/QuoteCard";
-import { Heart, Quote as QuoteIcon } from "lucide-react";
+import { Heart, Quote as QuoteIcon, Youtube, Instagram } from "lucide-react";
 
 const authorsData = [
   {
@@ -83,13 +83,44 @@ export default function HomeContent({ quotes }) {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center pt-10">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-10">
             <a
               href="#featured"
               className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-sky-500 text-white font-semibold shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:scale-[1.02] active:scale-[0.99] transition-all duration-300"
             >
               <span>Browse Featured Quotes</span>
             </a>
+            <div className="flex items-center justify-center gap-3">
+              <a
+                href="https://youtube.com/your-channel"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white text-red-600 border border-slate-200 font-medium shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all duration-300"
+                aria-label="Visit our YouTube channel"
+              >
+                <Youtube className="w-5 h-5" />
+                <span className="sr-only">YouTube</span>
+              </a>
+              <a
+                href="https://instagram.com/your-profile"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white text-pink-600 border border-slate-200 font-medium shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all duration-300"
+                aria-label="Follow us on Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+                <span className="sr-only">Instagram</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Disclaimer */}
+          <div className="mt-6 max-w-2xl mx-auto text-center">
+            <p className="text-xs text-slate-500 leading-relaxed">
+              <span className="font-medium text-slate-600">Disclaimer:</span> All content is shared for educational and inspirational purposes only. 
+              We strive to maintain accuracy and respect for all sources. The views expressed in these quotes belong solely to their respective authors. 
+              This content is not intended to provide professional advice or to substitute for independent professional judgment.
+            </p>
           </div>
 
           {/* Small quote highlight */}
@@ -127,13 +158,13 @@ export default function HomeContent({ quotes }) {
 
                 <div className="relative bg-white/80 backdrop-blur-xl border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group-hover:-translate-y-2">
                   {/* Author Image (no text, no color effect) */}
-                  <div className="relative h-64 w-full overflow-hidden">
+                  <div className="relative h-74 w-full overflow-hidden">
                     <Image
                       src={author.image}
                       alt={author.name}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="object-fit transition-transform duration-700 ease-out group-hover:scale-105"
                       priority={false}
                     />
 
@@ -150,9 +181,6 @@ export default function HomeContent({ quotes }) {
                     {/* Name */}
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <p className="text-xs uppercase tracking-[0.18em] text-slate-400 mb-1">
-                          Author
-                        </p>
                         <h3 className="text-xl font-semibold text-slate-900">
                           {author.name}
                         </h3>
@@ -231,6 +259,27 @@ export default function HomeContent({ quotes }) {
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Browse More Quotes CTA */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+            Want to explore more wisdom?
+          </h2>
+          <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
+            Discover our complete collection of inspiring quotes from great minds across history.
+          </p>
+          <a
+            href="/quotes"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 text-white font-semibold shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:scale-[1.02] active:scale-[0.99] transition-all duration-300"
+          >
+            <span>Browse All Quotes</span>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </a>
         </div>
       </section>
     </>

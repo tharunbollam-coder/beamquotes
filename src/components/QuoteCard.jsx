@@ -13,6 +13,10 @@ export default function QuoteCard({
   copied,
   onCopy,
   youtubeUrl,
+  // NEW: optional brand name for sharing
+  brandName = "YourBrandName",
+  // OPTIONAL: if you have a dedicated quote page like /quotes/[id]
+  sharePath = "/quotes", // e.g. "/quotes" -> /quotes/123
 }) {
   const isTrustedYoutube = (url) => {
     if (!url) return false;
@@ -20,7 +24,9 @@ export default function QuoteCard({
       const parsed = new URL(url);
       const host = parsed.hostname.toLowerCase();
       return (
-        (host === "youtube.com" || host === "www.youtube.com" || host === "youtu.be") &&
+        (host === "youtube.com" ||
+          host === "www.youtube.com" ||
+          host === "youtu.be") &&
         parsed.protocol === "https:"
       );
     } catch {
@@ -43,13 +49,129 @@ export default function QuoteCard({
     "from-slate-50 to-slate-100 text-slate-700 border-slate-100/70";
 
   const [imageSrc, setImageSrc] = React.useState(
-    typeof image === 'string' ? image : image?.url || ''
+    typeof image === "string" ? image : image?.url || ""
   );
   const [imageError, setImageError] = React.useState(false);
   const hasImage = !!(imageSrc && !imageError);
 
-  const handleImageError = (e) => {
+  const handleImageError = () => {
     setImageError(true);
+  };
+
+  // ✅ SHARE HANDLER
+  const handleShare = async () => {
+    try {
+      const shareText = `"${text}" — ${author || "Unknown"}`;
+      const brandText = `Shared via ${brandName}`;
+      const url = typeof window !== "undefined" ? window.location.href : "";
+
+      // Create a canvas to generate a shareable image
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      // Set canvas size (Instagram post size)
+      canvas.width = 1080;
+      canvas.height = 1080;
+
+      // Fill background
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Add gradient overlay
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, "rgba(99, 102, 241, 0.1)");
+      gradient.addColorStop(1, "rgba(14, 165, 233, 0.1)");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Add quote text
+      ctx.fillStyle = "#1f2937";
+      ctx.textAlign = "center";
+
+      // Set font and wrap text
+      ctx.font = "bold 48px Arial";
+      const maxWidth = canvas.width * 0.8;
+      const lineHeight = 70;
+      let y = canvas.height * 0.4;
+
+      // Split text into lines
+      const words = text.split(" ");
+      let line = "";
+
+      for (let n = 0; n < words.length; n++) {
+        const testLine = line + words[n] + " ";
+        const metrics = ctx.measureText(testLine);
+        const testWidth = metrics.width;
+
+        if (testWidth > maxWidth && n > 0) {
+          ctx.fillText(line, canvas.width / 2, y);
+          line = words[n] + " ";
+          y += lineHeight;
+        } else {
+          line = testLine;
+        }
+      }
+      ctx.fillText(line, canvas.width / 2, y);
+
+      // Add author
+      if (author) {
+        ctx.font = "italic 36px Arial";
+        ctx.fillStyle = "#4b5563";
+        ctx.fillText(`— ${author}`, canvas.width / 2, y + 80);
+      }
+
+      // Add branding
+      ctx.font = "24px Arial";
+      ctx.fillStyle = "#6b7280";
+      ctx.fillText(brandText, canvas.width / 2, canvas.height - 60);
+
+      // Convert canvas to blob
+      const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+
+      if (navigator.share) {
+        // Use Web Share API with image
+        const shareData = {
+          title: author ? `Quote by ${author}` : "Inspiring Quote",
+          text: shareText,
+          url: url,
+          files: [new File([blob], "quote.png", { type: "image/png" })],
+        };
+
+        if (navigator.canShare && navigator.canShare({ files: [shareData.files[0]] })) {
+          await navigator.share(shareData);
+        } else {
+          // Fallback: Share text if files can't be shared
+          await navigator.share({
+            title: shareData.title,
+            text: shareData.text,
+            url: shareData.url,
+          });
+        }
+      } else if (navigator.clipboard) {
+        // Fallback: Copy image to clipboard
+        try {
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              "image/png": blob,
+            }),
+          ]);
+          alert("Quote image copied to clipboard!");
+        } catch (err) {
+          // Final fallback: Just copy text
+          await navigator.clipboard.writeText(`${shareText}\n\n${brandText}\n${url}`);
+          alert("Quote text copied to clipboard!");
+        }
+      } else {
+        // Last resort: Open image in new tab
+        const imageUrl = URL.createObjectURL(blob);
+        window.open(imageUrl, "_blank");
+      }
+    } catch (error) {
+      console.error("Sharing failed:", error);
+      alert("Sharing is not supported or was cancelled");
+      console.error("Error sharing quote:", error);
+      alert("Unable to share this quote right now.");
+    }
   };
 
   return (
@@ -60,16 +182,16 @@ export default function QuoteCard({
           <div className="w-full h-full flex items-center justify-center">
             <Image
               src={imageSrc}
-              alt={`Quote by ${author || 'Unknown'}`}
+              alt={`Quote by ${author || "Unknown"}`}
               width={400}
               height={300}
               className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
               style={{
-                maxWidth: '100%',
-                maxHeight: '100%',
-                objectFit: 'contain',
+                maxWidth: "100%",
+                maxHeight: "100%",
+                objectFit: "contain",
               }}
-              unoptimized={process.env.NODE_ENV !== 'production'}
+              unoptimized={process.env.NODE_ENV !== "production"}
               onError={handleImageError}
               priority={false}
               loading="lazy"
@@ -80,7 +202,7 @@ export default function QuoteCard({
             <div className="text-white text-center p-4">
               <div className="text-5xl font-serif mb-2 opacity-70">"</div>
               <p className="text-sm font-medium opacity-80">
-                {imageError ? 'Image not available' : 'No image available'}
+                {imageError ? "Image not available" : "No image available"}
               </p>
             </div>
           </div>
@@ -149,6 +271,7 @@ export default function QuoteCard({
           </a>
 
           <button
+            onClick={handleShare}
             className="ml-auto flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-slate-50 text-slate-600 border border-slate-100 hover:bg-slate-100 transition-all duration-300"
             title="Share quote"
           >
