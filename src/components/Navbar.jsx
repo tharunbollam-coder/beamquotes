@@ -51,7 +51,10 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
               className="p-2 rounded-lg hover:bg-slate-100 transition-colors duration-200"
+              title={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? (
                 <X className="w-6 h-6 text-slate-700" />
@@ -64,7 +67,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-4 border-t border-slate-100 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div id="mobile-menu" className="md:hidden pb-4 border-t border-slate-100 animate-in fade-in slide-in-from-top-2 duration-200">
             <a
               href="/"
               className="block px-4 py-2 text-sm font-medium text-slate-700 hover:text-indigo-600 transition-colors duration-200"

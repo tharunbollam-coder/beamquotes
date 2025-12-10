@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import { Share2, Copy, Youtube, Quote as QuoteIcon } from "lucide-react";
 
@@ -13,6 +14,20 @@ export default function QuoteCard({
   onCopy,
   youtubeUrl,
 }) {
+  const isTrustedYoutube = (url) => {
+    if (!url) return false;
+    try {
+      const parsed = new URL(url);
+      const host = parsed.hostname.toLowerCase();
+      return (
+        (host === "youtube.com" || host === "www.youtube.com" || host === "youtu.be") &&
+        parsed.protocol === "https:"
+      );
+    } catch {
+      return false;
+    }
+  };
+
   const categoryColors = {
     Motivation:
       "from-indigo-50 to-sky-50 text-indigo-700 border-indigo-100/70",
@@ -27,23 +42,46 @@ export default function QuoteCard({
     categoryColors[category] ||
     "from-slate-50 to-slate-100 text-slate-700 border-slate-100/70";
 
+  const [imageSrc, setImageSrc] = React.useState(
+    typeof image === 'string' ? image : image?.url || ''
+  );
+  const [imageError, setImageError] = React.useState(false);
+  const hasImage = !!(imageSrc && !imageError);
+
+  const handleImageError = (e) => {
+    setImageError(true);
+  };
+
   return (
     <article className="group bg-white rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 overflow-hidden hover:-translate-y-1">
       {/* Image Section */}
-      <div className="relative h-64 w-full overflow-hidden">
-        {image ? (
-          <Image
-            src={image}
-            alt={author}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-          />
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
+        {hasImage ? (
+          <div className="w-full h-full flex items-center justify-center">
+            <Image
+              src={imageSrc}
+              alt={`Quote by ${author || 'Unknown'}`}
+              width={400}
+              height={300}
+              className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+              style={{
+                maxWidth: '100%',
+                maxHeight: '100%',
+                objectFit: 'contain',
+              }}
+              unoptimized={process.env.NODE_ENV !== 'production'}
+              onError={handleImageError}
+              priority={false}
+              loading="lazy"
+            />
+          </div>
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-indigo-400 to-sky-500 flex items-center justify-center">
-            <div className="text-white text-center">
-              <div className="text-5xl font-serif mb-2 opacity-70">“</div>
-              <p className="text-sm font-medium opacity-80">Quote</p>
+            <div className="text-white text-center p-4">
+              <div className="text-5xl font-serif mb-2 opacity-70">"</div>
+              <p className="text-sm font-medium opacity-80">
+                {imageError ? 'Image not available' : 'No image available'}
+              </p>
             </div>
           </div>
         )}
@@ -98,11 +136,13 @@ export default function QuoteCard({
           </button>
 
           <a
-            href={youtubeUrl}
+            href={isTrustedYoutube(youtubeUrl) ? youtubeUrl : undefined}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-red-50 text-red-600 border border-red-100 hover:bg-red-100 transition-all duration-300"
+            className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-red-50 text-red-600 border border-red-100 hover:bg-red-100 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
             title="Watch on YouTube"
+            aria-disabled={!isTrustedYoutube(youtubeUrl)}
+            tabIndex={isTrustedYoutube(youtubeUrl) ? 0 : -1}
           >
             <Youtube className="w-4 h-4 sm:w-4 sm:h-4" />
             <span>YouTube</span>

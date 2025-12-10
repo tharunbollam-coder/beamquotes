@@ -45,7 +45,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/about"
                   className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
                 >
                   About Us
@@ -54,47 +54,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Categories */}
-          <div>
-            <h3 className="text-slate-900 font-semibold mb-4 text-sm uppercase tracking-[0.15em]">
-              Categories
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a
-                  href="#"
-                  className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
-                >
-                  Motivation
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
-                >
-                  Success
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
-                >
-                  Wisdom
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-slate-700 hover:text-indigo-600 transition-colors duration-200"
-                >
-                  Inspiration
-                </a>
-              </li>
-            </ul>
-          </div>
-
+         
           {/* Contact & Social */}
           <div>
             <h3 className="text-slate-900 font-semibold mb-4 text-sm uppercase tracking-[0.15em]">
@@ -103,25 +63,33 @@ export default function Footer() {
             <div className="flex space-x-3 mb-4">
               <a
                 href="#"
+                aria-label="GitHub"
                 className="bg-white/80 border border-slate-200 text-slate-700 p-2 rounded-lg hover:bg-slate-50 hover:border-indigo-200 transition-colors duration-200 shadow-sm"
+                title="Visit our GitHub"
               >
                 <Github className="w-4 h-4" />
               </a>
               <a
                 href="#"
+                aria-label="LinkedIn"
                 className="bg-white/80 border border-slate-200 text-slate-700 p-2 rounded-lg hover:bg-slate-50 hover:border-indigo-200 transition-colors duration-200 shadow-sm"
+                title="Visit our LinkedIn"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
                 href="#"
+                aria-label="Twitter"
                 className="bg-white/80 border border-slate-200 text-slate-700 p-2 rounded-lg hover:bg-slate-50 hover:border-indigo-200 transition-colors duration-200 shadow-sm"
+                title="Visit our Twitter"
               >
                 <Twitter className="w-4 h-4" />
               </a>
               <a
                 href="#"
+                aria-label="Email us"
                 className="bg-white/80 border border-slate-200 text-slate-700 p-2 rounded-lg hover:bg-slate-50 hover:border-indigo-200 transition-colors duration-200 shadow-sm"
+                title="Send us an email"
               >
                 <Mail className="w-4 h-4" />
               </a>
