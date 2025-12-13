@@ -41,6 +41,7 @@ export default function Footer() {
     { href: "/", label: "Home" },
     { href: "/quotes", label: "Quotes" },
     { href: "/about", label: "About Us" },
+    { href: "/contact", label: "Contact Us" },
   ];
 
   const legalLinks = [

@@ -45,6 +45,12 @@ export default function Navbar() {
             >
               About
             </a>
+           <a
+              href="/contact"
+              className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-indigo-600 transition-colors duration-200"
+            >
+              Contact
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -85,6 +91,12 @@ export default function Navbar() {
               className="block px-4 py-2 text-sm font-medium text-slate-700 hover:text-indigo-600 transition-colors duration-200"
             >
               About
+            </a>
+            <a
+              href="/contact"
+              className="block px-4 py-2 text-sm font-medium text-slate-700 hover:text-indigo-600 transition-colors duration-200"
+            >
+              Contact
             </a>
           </div>
         )}
