@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Youtube, Instagram } from "lucide-react";
 import Link from "next/link";
 
 // Reusable Link Component
@@ -52,25 +52,15 @@ export default function Footer() {
 
   const socialLinks = [
     { 
-      href: "https://github.com", 
-      icon: Github, 
-      label: "GitHub" 
+      href: "https://youtube.com/@beamquotes?si=ambrnUBewPx4cu0O", 
+      icon: Youtube, 
+      label: "YouTube" 
     },
     { 
-      href: "https://linkedin.com", 
-      icon: Linkedin, 
-      label: "LinkedIn" 
-    },
-    { 
-      href: "https://twitter.com", 
-      icon: Twitter, 
-      label: "Twitter" 
-    },
-    { 
-      href: "mailto:info@quotes.com", 
-      icon: Mail, 
-      label: "Email us" 
-    },
+      href: "https://www.instagram.com/_beamquotes?igsh=MXJ6Y2sxYnp1ZWlhaA==", 
+      icon: Instagram, 
+      label: "Instagram" 
+    }
   ];
 
   return (
@@ -87,11 +77,11 @@ export default function Footer() {
                 <span className="text-white font-bold text-lg">Q</span>
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-sky-500 bg-clip-text text-transparent">
-                Quotes
+                BeamQuotes
               </span>
             </div>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Discover inspiring quotes from great minds around the world.
+              BeamQuotes - Discover inspiring quotes from great minds around the world.
               Perfect for your daily motivation and creative projects.
             </p>
           </div>
@@ -123,10 +113,10 @@ export default function Footer() {
             </div>
             <div className="pt-2">
               <a
-                href="mailto:info@quotes.com"
+                href="mailto:beamquotes.contact@gmail.com"
                 className="text-sm text-slate-700 hover:text-indigo-600 transition-colors duration-200"
               >
-                info@quotes.com
+                beamquotes.contact@gmail.com
               </a>
             </div>
           </div>
@@ -136,7 +126,7 @@ export default function Footer() {
         <div className="border-t border-slate-100 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-slate-500 text-center md:text-left">
-              &copy; {currentYear} Quotes. All rights reserved.
+              &copy; {currentYear} BeamQuotes. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               {legalLinks.map((link) => (

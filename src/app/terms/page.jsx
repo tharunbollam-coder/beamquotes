@@ -107,7 +107,7 @@ export default function TermsPage() {
             <Mail className="w-6 h-6 text-indigo-600 mx-auto mb-3" />
             <p className="text-sm text-slate-600">If you have questions about these terms, you may contact us at:</p>
             <p className="font-semibold text-indigo-600 text-sm mt-2">
-              support@beamquotes.com
+              beamquotes.contact@gmail.com
             </p>
           </div>
         </div>

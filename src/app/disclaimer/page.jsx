@@ -102,7 +102,7 @@ export default function DisclaimerPage() {
               If you have questions about this disclaimer, you can contact us at:
             </p>
             <p className="font-semibold text-indigo-600 text-sm mt-2">
-              support@beamquotes.com
+              beamquotes.contact@gmail.com
             </p>
           </div>
         </div>

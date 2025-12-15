@@ -7,9 +7,9 @@ import { getFeaturedQuotes } from "@/sanity/lib/queries";
 export const revalidate = 60;
 
 export const metadata = {
-  title: "Quotes - Discover Inspiring Quotes Daily",
+  title: "BeamQuotes - Discover Inspiring Quotes Daily",
   description:
-    "Find powerful quotes from great minds. Share, save, and get daily inspiration.",
+    "BeamQuotes - Find powerful quotes from great minds. Share, save, and get daily inspiration.",
 };
 
 async function Home() {

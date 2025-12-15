@@ -21,7 +21,7 @@ export default function Navbar() {
               <Quote className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-sky-500 bg-clip-text text-transparent">
-              Quotes
+              BeamQuotes
             </span>
           </a>
 

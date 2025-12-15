@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 export default function PrivacyPolicyPage() {
-  const contactEmail = "support@beamquotes.com"; // change to your email
+  const contactEmail = "beamquotes.contact@gmail.com";
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">

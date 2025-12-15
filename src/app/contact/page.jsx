@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { Mail, Heart, Info, MessageCircle } from "lucide-react";
 
 export default function ContactPage() {
-  const email = "support@beamquotes.com"; // Change to your email
+  const email = "beamquotes.contact@gmail.com";
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">

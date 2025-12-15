@@ -92,7 +92,7 @@ export default function HomeContent({ quotes }) {
             </a>
             <div className="flex items-center justify-center gap-3">
               <a
-                href="https://youtube.com/your-channel"
+                href="https://youtube.com/@beamquotes?si=ambrnUBewPx4cu0O"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white text-red-600 border border-slate-200 font-medium shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all duration-300"
@@ -102,7 +102,7 @@ export default function HomeContent({ quotes }) {
                 <span className="sr-only">YouTube</span>
               </a>
               <a
-                href="https://instagram.com/your-profile"
+                href="https://www.instagram.com/_beamquotes?igsh=MXJ6Y2sxYnp1ZWlhaA=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white text-pink-600 border border-slate-200 font-medium shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all duration-300"

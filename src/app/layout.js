@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Quotes - Discover Inspiring Quotes Daily",
+  title: "BeamQuotes - Discover Inspiring Quotes Daily",
   description:
-    "Find powerful quotes from great minds. Share, save, and get daily inspiration.",
+    "BeamQuotes - Find powerful quotes from great minds. Share, save, and get daily inspiration.",
   alternates: {
     canonical: siteUrl,
   },
